@@ -67,14 +67,13 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision "shell", inline: <<-SHELL
-    # cat /home/j117/test_vagrant_box.pub >> /home/vagrant/.ssh/authorized_keys
-    apt-get update
-    apt-get install -y apache2
-  SHELL
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   # cat /home/j117/test_vagrant_box.pub >> /home/vagrant/.ssh/authorized_keys
+  #   apt-get update
+  #   apt-get install -y apache2
+  # SHELL
 
-  # TODO use shell provisioner with path to script
-  # config.vm.provision "shell", path: "./script.sh"
+  config.vm.provision "shell", path: "./script.sh"
   # INFO Workaround to set vagrant box name
   config.vm.define "test_vagrant_box"
   config.vm.hostname = "testvagrantbox"
